@@ -45,7 +45,7 @@ public class Alumnes {
         this.anysETSE = anysETSE;
     }
 
-    public boolean isGraduat() {
+    public boolean esGraduat() {
         return graduat;
     }
 
@@ -64,11 +64,20 @@ public class Alumnes {
                 '}';
     }
     public boolean marcarGraduat(Alumnes alumne) {
-        if (!alumne.isGraduat()) {
+        if (!alumne.esGraduat()) {
             alumne.setGraduat(true);
             return true;
         }
         return false;
     }
+
+    public boolean afegirMembre(Alumnes alumne) {
+        // Mirar si  ja va ser donat de baixa
+        if (alumne.getDataBaixa() != null) {
+            return false;
+        }
+        return true;
+    }
+    
 
 }
