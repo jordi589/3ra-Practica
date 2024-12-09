@@ -1,5 +1,3 @@
-package Associacions;
-
 public class Associacio {
     
     private String nom; 
