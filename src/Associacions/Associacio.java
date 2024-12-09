@@ -1,16 +1,18 @@
+import Persones.Persona;
+
 public class Associacio {
     
     private String nom; 
     private String correu;
     private String titulacio; // Inicials de la titulacio
-    private LlistaMembres membres; 
+    private LlistaPersones persones; 
     private LlistaAccions accions; 
 
     public Associacio(String nom, String correuContacte) {
         this.nom = nom;
         this.correu = correu;
         this.titulacio =  titulacio;
-        this.membres = new LlistaMembres();
+        this.persones = new LlistaPersones();
         this.accions = new LlistaAccions();
     }
 
@@ -34,20 +36,29 @@ public class Associacio {
         return titulacio;
     }
 
-    public LlistaMembres getMembres() {
-        return membres;
+    public LlistaPersones getPersones() {
+        return persones;
     }
 
     public LlistaAccions getAccions() {
         return accions;
     }
 
-    public void afegirMembre(Membre membre) {
-        membres.afegirMembre(membre);
-        if (membre instanceof Alumne) {
-            afegirTitulacio(((Alumne) membre).getTitulacio());
+    public void afegirPersona(Persona persona) {
+        this.persones.afegirPersona(persona); 
+        if (persona instanceof Alumne) {
+            Alumne alumne = (Alumne) persona;
+            titulacions.add(alumne.getTitulacio());
         }
-    } // mho ha fet el chat 
+    }
+
+    public void assignarCarrec(String tipus, Alumne alumne) {
+        if (tipus.equalsIgnoreCase("president") || tipus.equalsIgnoreCase("secretari") || tipus.equalsIgnoreCase("tresorer")) {
+            carrecs.put(tipus.toLowerCase(), alumne);
+        } else {
+            throw new IllegalArgumentException("El càrrec només pot ser president, secretari o tresorer.");
+        }
+    }
 
     @Override
     public String toString() {
