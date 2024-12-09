@@ -63,8 +63,7 @@ public class Alumnes {
                 ", graduat=" + graduat +
                 '}';
     }
-    public boolean marcarGraduat(String alies) {
-        Alumnes alumne = alumnes.get(alies);
+    public boolean marcarGraduat(Alumnes alumne) {
         if (!alumne.isGraduat()) {
             alumne.setGraduat(true);
             return true;
