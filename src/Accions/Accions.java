@@ -3,9 +3,9 @@ import java.util.Date;
 public abstract class Accions {
     private String codi;
     private String titol;
-    private Associacio associacioResponsable;
+    private Associacions associacioResponsable;
 
-    public Accio(String codi, String titol, Associacio associacioResponsable) {
+    public Accio(String codi, String titol, Associacions associacioResponsable) {
         this.codi = codi;
         this.titol = titol;
         this.associacioResponsable = associacioResponsable;
@@ -19,7 +19,7 @@ public abstract class Accions {
         return titol;
     }
 
-    public Associacio getAssociacioResponsable() {
+    public Associacions getAssociacioResponsable() {
         return associacioResponsable;
     }
 
@@ -32,7 +32,7 @@ class Demostracio extends Accio {
     private int comptadorOferiments;
     private double ccostMaterial;
 
-    public Demostracio(String codi, String titol, Associacio associacioResponsable, Date dataDisseny, boolean activa, double costMaterial) {
+    public Demostracio(String codi, String titol, Associacions associacioResponsable, Date dataDisseny, boolean activa, double costMaterial) {
         super(codi, titol, associacioResponsable);
         this.dataDisseny = dataDisseny;
         this.activa = activa;
@@ -64,7 +64,7 @@ class Xerrada extends Accio {
     private int assistents;
     private List<Integer> valoracions;
 
-    public Xerrada(String codi, String titol, Associacio associacioResponsable, Date data, String[] membresImpartidors, int assistents) {
+    public Xerrada(String codi, String titol, Associacions associacioResponsable, Date data, String[] membresImpartidors, int assistents) {
         super(codi, titol, associacioResponsable);
         this.data = data;
         this.membresImpartidors = membresImpartidors;

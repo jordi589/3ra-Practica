@@ -1,30 +1,38 @@
 public class LlistaAssociacions {
-    private String[] elements;
-    private int mida;
+    private Associacions [] llista;
+    private int numAssociacions;             //*afegir el to string pel case 1 */
 
     public LlistaAssociacions() {
-        this.elements = new String[3]; // Màxim es pot apuntar a 3 associacions
-        this.mida = 0;
+        llista = new Associacions[1000]; // Capacitat inicial
+        numAssociacions = 0;
     }
 
-    public boolean afegir(String element) {
-        if (mida < elements.length && !trobat(element)) {
-            elements[mida++] = element;
-            return true;
-        }
-        return false;
-    }
-    public boolean trobat(String element) {
-        for (int i = 0; i < mida; i++) {
-            if (elements[i].equals(element)) {
-                return true;
-            }
-        }
-        return false;
+    public int getNumAssociacions(){
+        return numAssociacions;
     }
 
-    public int mida() {
-        return mida;
+    public void setNumAssociacions(int numAssociacions){
+        this.numAssociacions = numAssociacions;
     }
+
+    public void afegirAssociacio(Associacions associacio){
+        if (numAssociacions >= llista.length) {
+            System.out.println("Error: No es poden afegir més associacions. Capacitat màxima assolida.");
+        }
+        else{
+            llista[numAssociacions] = associacio;
+            numAssociacions++;
+        }
+    }
+    public Associacions obtenirAssociacio(int posicio) {
+        if (posicio >= 0 && posicio < numAssociacions) {
+            Associacions associacio = llista[posicio];
+            return associacio;
+        } else {
+            System.out.println("Error: Índex fora de rang.");
+            return null;
+        }
+    }
+
 }
 

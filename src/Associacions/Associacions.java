@@ -1,14 +1,18 @@
 import Persones.Persona;
 
-public class Associacio {
+public class Associacions {
     
     private String nom; 
     private String correu;
     private String titulacio; // Inicials de la titulacio
+    private int numMembres;
     private LlistaPersones persones; 
     private LlistaAccions accions; 
+    private Alumnes president;
+    private Alumnes secretari;
+    private Alumnes tresorer;
 
-    public Associacio(String nom, String correuContacte) {
+    public Associacions(String nom, String correu, String titulacio) {
         this.nom = nom;
         this.correu = correu;
         this.titulacio =  titulacio;
@@ -44,21 +48,21 @@ public class Associacio {
         return accions;
     }
 
-    public void afegirPersona(Persona persona) {
-        this.persones.afegirPersona(persona); 
-        if (persona instanceof Alumne) {
-            Alumne alumne = (Alumne) persona;
-            titulacions.add(alumne.getTitulacio());
-        }
-    }
 
-    public void assignarCarrec(String tipus, Alumne alumne) {
-        if (tipus.equalsIgnoreCase("president") || tipus.equalsIgnoreCase("secretari") || tipus.equalsIgnoreCase("tresorer")) {
-            carrecs.put(tipus.toLowerCase(), alumne);
-        } else {
-            throw new IllegalArgumentException("El càrrec només pot ser president, secretari o tresorer.");
-        }
+public void assignarCarrec(String tipus, Alumne alumne) { //*ficar condicio si alumne està activo */
+    if (tipus  == "president") {
+        president = alumne; 
+        System.out.println("President assignat correctament.");
+    } else if (tipus  == "secretari") {
+        secretari = alumne; 
+        System.out.println("Secretari assignat correctament.");
+    } else if (tipus  == "tresorer") {
+        tresorer = alumne;
+        System.out.println("Tresorer assignat correctament.");
+    } else {
+        System.out.println("Error: Els càrrecs només poden ser president, secretari o tresorer.");
     }
+}
 
     @Override
     public String toString() {
@@ -66,7 +70,7 @@ public class Associacio {
                 "nom='" + nom + '\'' +
                 ", correuContacte='" + correuContacte + '\'' +
                 ", titulacions=" + titulacions +
-                ", membres=" + membres +
+                ", membres=" + numMembres +
                 ", accions=" + accions +
                 '}';
     }
